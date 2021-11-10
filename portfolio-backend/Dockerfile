@@ -1,18 +1,14 @@
-FROM ruby:3.0.0
+# syntax=docker/dockerfile:1
+FROM ruby:3.0
 
-ENV BUNDLE_VERSION 2.2.11
-ENV APP /usr/src/app
+ENV LANG=C.UTF-8 \
+  TZ=Asia/Tokyo
 
-# netcat is for nc command
-RUN apt-get update && apt-get install -y netcat && RUN apt-get install -y vim
-RUN gem install bundler --version "$BUNDLE_VERSION" 
-
-RUN mkdir $APP
-WORKDIR $APP
-
-COPY Gemfile* $APP/
+WORKDIR /app
+RUN apt-get update -qq && apt-get install -y nodejs default-mysql-client
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 
-COPY . $APP/
-
-CMD ["./bin/server-dev"]
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
