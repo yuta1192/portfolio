@@ -4,22 +4,25 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
 
-  # pgadmin4:
-  #   image: dpage/pgadmin4:5.6
-  #   container_name: pgadmin4
-  #   ports:
-  #     - 80:80
-  #   volumes:
-  #     - ./pgadmin:/var/lib/pgadmin/storage
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: postgres
-  #     PGADMIN_DEFAULT_PASSWORD: password
-  #   hostname: pgadmin4
-  #   restart: always
+  pgadmin4:
+    image: dpage/pgadmin4:5.6
+    container_name: pgadmin4
+    ports:
+      - 80:80
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'pdadmin4@email.com'
+      PGADMIN_DEFAULT_PASSWORD: 'password'
+    hostname: pgadmin4
+    depends_on:
+      - db
+    restart: always
 
   backend:
     tty: true
@@ -43,3 +46,9 @@ services:
     command: 'yarn dev'
     ports:
       - '8000:3000'
+
+volumes:
+  postgres-db:
+    driver: local
+  pgadmin:
+    driver: local
