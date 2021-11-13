@@ -85,3 +85,4 @@ production:
   database: portfolio_production
   username: user
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
