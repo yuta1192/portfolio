@@ -1,24 +1,24 @@
 import React, { FC } from "react";
 import { GetStaticProps } from "next";
 
-type Test = {
+type Post = {
   id: number;
   title: string;
 };
 
 type Props = {
-  tests: Test[];
+  posts: Post[];
 };
 
 const Home: FC<Props> = (props) => {
   return (
     <div>
-      <h2>Testの一覧</h2>
+      <h2>POSTの一覧</h2>
       <table>
-        {props.tests.map((test) => (
-          <tr key={test.id}>
-            <td>{test.id}.</td>
-            <td>{test.title}</td>
+        {props.posts.map((post) => (
+          <tr key={post.id}>
+            <td>{post.id}.</td>
+            <td>{post.title}</td>
           </tr>
         ))}
       </table>
@@ -27,12 +27,12 @@ const Home: FC<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch("http://backend:3000/tests", { method: "GET" });
+  const response = await fetch("http://backend:3000/posts", { method: "GET" });
   const json = await response.json();
 
   return {
     props: {
-      tests: json,
+      posts: json,
     },
   };
 };

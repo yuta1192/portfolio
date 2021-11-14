@@ -17,10 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password: password
+  username: postgres # koko
+  password: password # koko
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db #koko
 
 development:
   <<: *default
@@ -85,4 +85,3 @@ production:
   database: portfolio_production
   username: user
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
