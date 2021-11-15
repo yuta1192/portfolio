@@ -4,6 +4,26 @@
 ## backend
 
 /portfolio-backend/.env
+/portfolio-backend/config/master.key
+
+/portfolio-backend/.bundle
+
+# Ignore all logfiles and tempfiles.
+/portfolio-backend/log/*
+/portfolio-backend/tmp/*
+!/portfolio-backend/log/.keep
+!/portfolio-backend/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/portfolio-backend/tmp/pids/*
+!/portfolio-backend/tmp/pids/
+!/portfolio-backend/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/portfolio-backend/storage/*
+!/portfolio-backend/storage/.keep
+/portfolio-backend/.byebug_history
+
 
 
 ## frontend
