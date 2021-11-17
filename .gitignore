@@ -1,7 +1,6 @@
+## backend
 
 /portfolio-backend/vendor/bundle
-
-## backend
 
 /portfolio-backend/.env
 /portfolio-backend/config/master.key
@@ -26,4 +25,42 @@
 
 
 
+
+
+
 ## frontend
+
+/portfolio-frontend/app/node_modules
+/portfolio-frontend/app/.pnp
+/portfolio-frontend/app/.pnp.js
+
+# testing
+/portfolio-frontend/app/coverage
+
+# next.js
+/portfolio-frontend/app/.next/
+/portfolio-frontend/app/out/
+
+# production
+/portfolio-frontend/app/build
+
+# misc
+/portfolio-frontend/app/.DS_Store
+/portfolio-frontend/app/*.pem
+
+# debug
+/portfolio-frontend/app/npm-debug.log*
+/portfolio-frontend/app/yarn-debug.log*
+/portfolio-frontend/app/yarn-error.log*
+
+# local env files
+/portfolio-frontend/app/.env.local
+/portfolio-frontend/app/.env.development.local
+/portfolio-frontend/app/.env.test.local
+/portfolio-frontend/app/.env.production.local
+
+# vercel
+/portfolio-frontend/app/.vercel
+
+# typescript
+/portfolio-frontend/app/*.tsbuildinfo

@@ -27,7 +27,7 @@ const Home: FC<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const response = await fetch("http://backend:3000/posts", { method: "GET" });
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/posts`);
   const json = await response.json();
 
   return {
