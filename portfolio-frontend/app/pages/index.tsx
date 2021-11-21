@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import { GetStaticProps } from "next";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 type Post = {
   id: number;
@@ -15,7 +13,6 @@ type Props = {
 const Home: FC<Props> = (props) => {
   return (
     <>
-      <Header />
       <div>
         <h2>POSTの一覧</h2>
         <table>
@@ -27,7 +24,6 @@ const Home: FC<Props> = (props) => {
           ))}
         </table>
       </div>
-      <Footer />
     </>
   );
 };
