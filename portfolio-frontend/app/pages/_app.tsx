@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -9,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{pageProps.title}</title>
       </Head>
-      <Component {...pageProps} />;
+      <Header />
+      <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

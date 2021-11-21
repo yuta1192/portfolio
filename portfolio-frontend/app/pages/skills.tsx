@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Skill() {
+export default function App() {
   return (
     <>
       <h1>First Post</h1>
