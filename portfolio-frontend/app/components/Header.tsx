@@ -19,7 +19,7 @@ function Header() {
   const router = useRouter();
 
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50">
       <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
