@@ -2,56 +2,99 @@ import React, { FC } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CareerNavBer from "../components/CareerNavBer";
 
-type MyApp = {
+type Career = {
   id: number;
-  name: string;
+  year: number;
+  month: number;
+  title: title;
   description: string;
-  image: string;
-  url: string;
 };
 
 type Props = {
-  my_apps: MyApp[];
+  careers: Career[];
 };
 
-const MyApps: FC<Props> = (props) => {
+const Careers: FC<Props> = (props) => {
   return (
     <>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            {props.my_apps?.map((app) => (
-              <div className="p-4 md:w-1/3" key={app.id}>
-                <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                  <Link href="/">
-                    <Image
-                      className="lg:h-48 md:h-36 w-full object-cover object-center border-10"
-                      src={!app.image ? "/no_image.png" : app.image}
-                      width={720}
-                      height={400}
-                      alt="app_image"
-                    />
-                  </Link>
-                  <div className="p-6">
-                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                      {app.name}
-                    </h1>
-                    <p className="leading-relaxed mb-3">{app.description}</p>
-                  </div>
-                </div>
+      <div className="flex overflow-hidden bg-white rounded-lg">
+        <div className="hidden md:flex md:flex-shrink-0">
+          <div className="flex flex-col w-64">
+            <div
+              className="
+              flex flex-col flex-grow
+              pt-5
+              overflow-y-auto
+              bg-white
+              border-r border-gray-50
+            "
+            >
+              <div className="flex flex-col items-center flex-shrink-0 px-4">
+                <h2
+                  className="
+                    block
+                    p-2
+                    text-xl
+                    font-medium
+                    tracking-tighter
+                    text-gray-900
+                    transition
+                    duration-500
+                    ease-in-out
+                    transform
+                    cursor-pointer
+                    hover:text-gray-900
+                  "
+                >
+                  経歴
+                </h2>
               </div>
-            ))}
+              <div className="flex flex-col flex-grow px-4 mt-5">
+                <nav className="flex-1 space-y-1 bg-white">
+                  <CareerNavBer careers={props.careers}></CareerNavBer>
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+
+        <div className="flex flex-col flex-1 w-0 overflow-hidden">
+          <main className="relative flex-1 overflow-y-auto focus:outline-none">
+            <div className="py-6">
+              <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+                {props.careers?.map((career) => (
+                  <h1
+                    className="text-lg text-neutral-600"
+                    key={career.id}
+                    id={"career" + career.id}
+                  >
+                    <div className="container w-full px-5 py-24 mx-auto lg:px-32">
+                      <div className="flex flex-col w-full mx-auto mb-2 prose text-left prose-md">
+                        <div className="mb-5 border-b border-gray-200">
+                          <div className="flex flex-wrap items-baseline -mt-2">
+                            <h5>{career.month + "/" + career.year}</h5>
+                            <p className="mt-1 ml-2">{career.title}</p>
+                          </div>
+                        </div>
+                        <h1>{career.description}</h1>
+                      </div>
+                    </div>
+                  </h1>
+                ))}
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_apps`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/careers`
   );
   const json = await response.json();
 
@@ -64,9 +107,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      my_apps: json,
+      careers: json,
     },
   };
 };
 
-export default MyApps;
+export default Careers;

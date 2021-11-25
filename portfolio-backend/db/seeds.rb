@@ -106,12 +106,34 @@ Skill.create!(
 Career.create!(
   [
     {
-      career_year_month: "202010",
+      year: 2020,
+      month: 10,
       description: "aaaaaaaa",
     },
     {
-      career_year_month: "202011",
+      year: 2021,
+      month: 11,
       description: "bbbbbbbb",
+    },
+    {
+      year: 2021,
+      month: 9,
+      description: "bbbbbbbb",
+    },
+    {
+      year: 2021,
+      month: 8,
+      description: "bbbbbbbb",
+    },
+    {
+      year: 2022,
+      month: 12,
+      description: "ccccccccc",
+    },
+    {
+      year: 2022,
+      month: 4,
+      description: "ccccccccc",
     },
   ]
 )
