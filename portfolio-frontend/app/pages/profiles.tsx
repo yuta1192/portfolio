@@ -1,9 +1,35 @@
-import Link from "next/link";
+import React, { FC } from "react";
+import { GetStaticProps } from "next";
 
-export default function Profile() {
+type Profile = {
+  id: number;
+  name: string;
+  name_romaji: string;
+  description: string;
+  facebook_url: string;
+  github_url: string;
+  twitter_url: string;
+  qiita_url: string;
+  youtube_url: string;
+  address: string;
+  work_address: string;
+  birthday: number;
+  birthplace: string;
+  big_image: string;
+  small_image: string;
+};
+
+type Props = {
+  profile: Profile;
+};
+
+const Profiles: FC<Props> = (props) => {
   return (
     <>
-      <div className="max-w-4xl flex items-center h-auto lg:max-h-screen flex-wrap mx-auto my-24">
+      <div
+        className="max-w-4xl flex items-center h-auto lg:max-h-screen flex-wrap mx-auto my-24"
+        key={props.profile.id}
+      >
         {/*Main Col*/}
         <div
           id="profile"
@@ -159,4 +185,26 @@ export default function Profile() {
       </div>
     </>
   );
-}
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/profiles`
+  );
+  const json = await response.json();
+
+  // jsonが存在しない場合
+  if (!json) {
+    return {
+      props: {},
+    };
+  }
+
+  return {
+    props: {
+      profile: json,
+    },
+  };
+};
+
+export default Profiles;

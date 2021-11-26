@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_032037) do
+ActiveRecord::Schema.define(version: 2021_11_26_001847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,14 @@ ActiveRecord::Schema.define(version: 2021_11_23_032037) do
     t.string "github_url", null: false
     t.string "twitter_url", null: false
     t.string "qiita_url", null: false
-    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "big_image"
+    t.string "small_image"
+    t.string "work_address"
+    t.string "facebook_url"
+    t.string "youtube_url"
+    t.boolean "selected", default: false
   end
 
   create_table "qiita", force: :cascade do |t|
