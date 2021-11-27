@@ -8,7 +8,7 @@ type Career = {
   id: number;
   year: number;
   month: number;
-  title: title;
+  title: string;
   description: string;
 };
 

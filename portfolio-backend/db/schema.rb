@@ -63,7 +63,9 @@ ActiveRecord::Schema.define(version: 2021_11_26_001847) do
     t.string "work_address"
     t.string "facebook_url"
     t.string "youtube_url"
+    t.string "work"
     t.boolean "selected", default: false
+    t.string "instagram_url"
   end
 
   create_table "qiita", force: :cascade do |t|
