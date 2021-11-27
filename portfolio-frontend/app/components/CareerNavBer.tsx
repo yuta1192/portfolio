@@ -1,21 +1,9 @@
 import React from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-type career = {
-  id: number;
-  year: number;
-  month: number;
-  title: string;
-  description: string;
-};
-
-type careers = {
-  careers: career[];
-};
-
 function CareerMavBer({ careers }: { careers: any }) {
   const years = careers
-    .map((career: career) => career.year)
+    .map((career: any) => career.year)
     .filter(function (x: number, i: number, self: any) {
       return self.indexOf(x) === i;
     });
