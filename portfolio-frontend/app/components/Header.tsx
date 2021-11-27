@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const navigation = [
   { name: "プロフィール", href: "/profiles" },
@@ -38,24 +39,24 @@ function Header() {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <Link href="/">
-                      <a>
-                        <img
-                          className="block lg:hidden h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                          alt="Workflow"
-                        />
-                      </a>
-                    </Link>
-                    <Link href="/">
-                      <a>
-                        <img
-                          className="hidden lg:block h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                          alt="Workflow"
-                        />
-                      </a>
-                    </Link>
+                    <div className="block h-8 w-auto">
+                      <Link href="/">
+                        <a>
+                          <Image
+                            className="block lg:hidden h-8 w-auto"
+                            src="/favicon.png"
+                            alt="Portfolio"
+                            height={35}
+                            width={35}
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                    <div className="hidden lg:block w-auto ml-3 text-gray-300">
+                      <Link href="/">
+                        <a className="text-gray-300">Portfolio</a>
+                      </Link>
+                    </div>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
