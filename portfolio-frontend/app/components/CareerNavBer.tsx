@@ -32,7 +32,7 @@ function CareerMavBer({ careers }: { careers: any }) {
               {year}年
             </p>
             <ul>
-              {careers.map((career: career) => {
+              {careers.map((career: any) => {
                 if (career.year === year) {
                   return (
                     <li key={career.id}>
