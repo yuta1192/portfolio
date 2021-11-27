@@ -61,33 +61,35 @@ function Header() {
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.href === router.pathname
-                              ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
-                          aria-current={
-                            item.href === router.pathname ? "page" : undefined
-                          }
-                        >
-                          {item.name}
-                        </a>
+                        <Link href={item.href} key={item.name}>
+                          <a
+                            className={classNames(
+                              item.href === router.pathname
+                                ? "bg-gray-900 text-white"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                              "px-3 py-2 rounded-md text-sm font-medium"
+                            )}
+                            aria-current={
+                              item.href === router.pathname ? "page" : undefined
+                            }
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <a
-                      className="inline-block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
-                      href="/"
-                    >
-                      Sign up
-                    </a>
+                    <Link href="/">
+                      <a
+                        className="inline-block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
+                        href="/"
+                      >
+                        Sign up
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -96,31 +98,36 @@ function Header() {
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.href === router.pathname
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium"
-                    )}
-                    aria-current={
-                      item.href === router.pathname ? "page" : undefined
-                    }
-                  >
-                    {item.name}
-                  </Disclosure.Button>
+                  <Link href={item.href} key={item.name}>
+                    <a>
+                      <Disclosure.Button
+                        as="a"
+                        className={classNames(
+                          item.href === router.pathname
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "block px-3 py-2 rounded-md text-base font-medium"
+                        )}
+                        aria-current={
+                          item.href === router.pathname ? "page" : undefined
+                        }
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    </a>
+                  </Link>
                 ))}
-                <Disclosure.Button
-                  key="sign up"
-                  as="a"
-                  href="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  sign up
-                </Disclosure.Button>
+                <Link href="/">
+                  <a>
+                    <Disclosure.Button
+                      key="sign up"
+                      as="a"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    >
+                      sign up
+                    </Disclosure.Button>
+                  </a>
+                </Link>
               </div>
             </Disclosure.Panel>
           </>
