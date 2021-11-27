@@ -83,10 +83,7 @@ function Header() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <Link href="/">
-                      <a
-                        className="inline-block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
-                        href="/"
-                      >
+                      <a className="inline-block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white">
                         Sign up
                       </a>
                     </Link>
