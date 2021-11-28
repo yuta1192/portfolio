@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Error from "next/error";
 
 type MyApp = {
   id: number;
@@ -58,6 +59,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_apps`
   );
+  const errorCode = response.ok ? false : response.status;
+
+  if (errorCode) {
+    return <Error statusCode={errorCode} />;
+  }
+
   const json = await response.json();
 
   // jsonが存在しない場合
