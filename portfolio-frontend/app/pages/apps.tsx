@@ -61,7 +61,7 @@ const MyApps: FC<Props> = (props) => {
 
 export const getStaticProps = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_appsss`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_apps`
   );
   const errorCode = response.ok ? false : response.status;
   const json = await response.json();
