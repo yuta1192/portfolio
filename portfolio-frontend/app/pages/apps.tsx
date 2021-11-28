@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Error from "next/error";
@@ -60,7 +59,7 @@ const MyApps: FC<Props> = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_appsss`
   );
