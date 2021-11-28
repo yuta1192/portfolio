@@ -24,13 +24,20 @@ Profile.create!(
       name: "紺野狐",
       name_romaji: "konno kitsune",
       description: "プログラミングを頑張っています。",
+      facebook_url: "facebook.com/kitsune",
       github_url: "github.com/kitsune",
       twitter_url: "twitter.com/kitsune",
       qiita_url: "qiita.com/kitsune",
+      youtube_url: "youtube.com/kitsune",
+      instagram_url: "instagram.com/kitsune",
       address: "東京都",
-      birthday: 19940808,
+      work: "Webエンジニア",
+      work_address: "東京都",
       birthplace: "東京都",
-      image: nil,
+      birthday: 19940808,
+      big_image: nil,
+      small_image: nil,
+      selected: true,
     },
   ]
 )
@@ -106,12 +113,34 @@ Skill.create!(
 Career.create!(
   [
     {
-      career_year_month: "202010",
+      year: 2020,
+      month: 10,
       description: "aaaaaaaa",
     },
     {
-      career_year_month: "202011",
+      year: 2021,
+      month: 11,
       description: "bbbbbbbb",
+    },
+    {
+      year: 2021,
+      month: 9,
+      description: "bbbbbbbb",
+    },
+    {
+      year: 2021,
+      month: 8,
+      description: "bbbbbbbb",
+    },
+    {
+      year: 2022,
+      month: 12,
+      description: "ccccccccc",
+    },
+    {
+      year: 2022,
+      month: 4,
+      description: "ccccccccc",
     },
   ]
 )

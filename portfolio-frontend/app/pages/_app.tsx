@@ -11,9 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{pageProps.title}</title>
       </Head>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
     </>
   );
 }
