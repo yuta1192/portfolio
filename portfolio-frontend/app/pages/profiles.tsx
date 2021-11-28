@@ -40,10 +40,15 @@ type Profile = {
 };
 
 type Props = {
+  errorCode: number;
   profile: Profile;
 };
 
 const Profiles: FC<Props> = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   return (
     <>
       <div
@@ -268,22 +273,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/profiles`
   );
   const errorCode = response.ok ? false : response.status;
-
-  if (errorCode) {
-    return <Error statusCode={errorCode} />;
-  }
-
   const json = await response.json();
 
   // jsonが存在しない場合
   if (!json) {
     return {
+      errorCode,
       props: {},
     };
   }
 
   return {
     props: {
+      errorCode,
       profile: json,
     },
   };

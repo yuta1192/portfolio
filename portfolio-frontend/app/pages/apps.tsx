@@ -13,10 +13,15 @@ type MyApp = {
 };
 
 type Props = {
+  errorCode: number;
   my_apps: MyApp[];
 };
 
 const MyApps: FC<Props> = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -57,25 +62,22 @@ const MyApps: FC<Props> = (props) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_apps`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/my_appsss`
   );
   const errorCode = response.ok ? false : response.status;
-
-  if (errorCode) {
-    return <Error statusCode={errorCode} />;
-  }
-
   const json = await response.json();
 
   // jsonが存在しない場合
   if (!json) {
     return {
+      errorCode,
       props: {},
     };
   }
 
   return {
     props: {
+      errorCode,
       my_apps: json,
     },
   };

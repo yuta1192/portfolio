@@ -14,10 +14,15 @@ type Career = {
 };
 
 type Props = {
+  errorCode: number;
   careers: Career[];
 };
 
 const Careers: FC<Props> = (props) => {
+  if (props.errorCode) {
+    return <Error statusCode={props.errorCode} />;
+  }
+
   return (
     <>
       <div className="flex overflow-hidden bg-white rounded-lg">
@@ -98,22 +103,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/careers`
   );
   const errorCode = response.ok ? false : response.status;
-
-  if (errorCode) {
-    return <Error statusCode={errorCode} />;
-  }
-
   const json = await response.json();
 
   // jsonが存在しない場合
   if (!json) {
     return {
+      errorCode,
       props: {},
     };
   }
 
   return {
     props: {
+      errorCode,
       careers: json,
     },
   };
