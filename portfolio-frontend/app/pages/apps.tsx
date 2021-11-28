@@ -78,7 +78,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       errorCode,
-      my_apps: json, ,
+      my_apps: json,
     },
   };
 };
