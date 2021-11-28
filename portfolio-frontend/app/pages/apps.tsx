@@ -17,7 +17,7 @@ type Props = {
   my_apps: MyApp[];
 };
 
-const MyApps: NextPage<Props> = (props) => {
+const MyApps: FC<Props> = (props) => {
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} />;
   }
