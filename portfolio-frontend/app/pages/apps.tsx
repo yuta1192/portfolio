@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Error from "next/error";
@@ -16,7 +17,7 @@ type Props = {
   my_apps: MyApp[];
 };
 
-const MyApps: FC<Props> = (props) => {
+const MyApps: NextPage<Props> = (props) => {
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} />;
   }
@@ -67,9 +68,9 @@ export const getStaticProps = async () => {
   const json = await response.json();
 
   // jsonが存在しない場合
-  if (!json) {
+  if (!json || response.status !== 200) {
     return {
-      errorCode,
+      errorCode: response.status ? response.status : 404,
       props: {},
     };
   }
@@ -77,7 +78,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       errorCode,
-      my_apps: json,
+      my_apps: json, ,
     },
   };
 };
