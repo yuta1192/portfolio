@@ -78,17 +78,17 @@ MyApp.create!(
 Qiita.create!(
   [
     {
+      qiita_id: "jfoi903n",
       name: "qiita",
       description: "ポートフォリオ作ってみた。",
-      publish_data: 19940808,
-      image: nil,
+      publish_date: 19940808,
       url: "https://qiita.co.jp",
     },
     {
+      qiita_id: "jdffoi903n",
       name: "qiita2",
       description: "ポートフォリオ作ってみた。2",
-      publish_data: 19940801,
-      image: nil,
+      publish_date: 19940801,
       url: "https://qiita2.co.jp",
     },
   ]
