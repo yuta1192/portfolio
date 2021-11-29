@@ -54,9 +54,9 @@ export const getStaticProps = async () => {
   const json = await response.json();
 
   // jsonが存在しない場合
-  if (!json || response.status !== 200) {
+  if (!json) {
     return {
-      errorCode: response.status ? response.status : 404,
+      errorCode,
       props: {},
     };
   }
