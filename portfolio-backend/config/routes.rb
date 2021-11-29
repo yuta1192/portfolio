@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :careers, only: [:index]
   resources :profiles, only: [:index]
   resources :qiitas, only: [:index]
+  resources :skills, only: [:index]
+  get '/skills/search', to: 'skills#search'
 end
