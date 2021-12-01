@@ -5,8 +5,8 @@ class SkillsController < ApplicationController
     render json: skills
   end
 
-  def search(params)
-    skills = Skill.where(kind: params)
+  def show
+    skills = Skill.where(kind: params[:id])
 
     render json: skills
   end
