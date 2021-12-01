@@ -8,7 +8,7 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: { flexWrap: ["hover", "focus"], minHeight: ["hover", "focus"] },
   },
   plugins: [],
   theme: {
@@ -21,6 +21,11 @@ module.exports = {
       red: colors.red,
       yellow: colors.amber,
       blue: colors.blue,
+    },
+    extend: {
+      colors: {
+        green: colors.emerald,
+      },
     },
   },
 };

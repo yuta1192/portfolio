@@ -103,6 +103,11 @@ Skill.create!(
       image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-original-wordmark.svg",
     },
     {
+      name: "ruby",
+      kind: 1,
+      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg"
+    },
+    {
       name: "react",
       kind: 1,
       image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
@@ -115,12 +120,31 @@ Career.create!(
     {
       year: 2020,
       month: 10,
-      description: "aaaaaaaa",
+      description: "aaaaaaaa,
+      kkkkkkkkkkkkkkkkk,
+      aaaaaaaaaaaaaaa
+      aaaaaaaaaaaa
+      aaaaaaaaaaaaaaaa
+      aaaaaaaaaaaaa
+      ",
     },
     {
       year: 2021,
       month: 11,
-      description: "bbbbbbbb",
+      description: "bbbbbbbb
+      aaaaaaaaaaaaa
+      aaaaaaaaa
+      aaaaaaaaaaaaaaaaaaa
+      a
+      a...
+
+      aaaaaaaaaaa
+
+      a
+
+
+
+      aaaaaaa",
     },
     {
       year: 2021,
