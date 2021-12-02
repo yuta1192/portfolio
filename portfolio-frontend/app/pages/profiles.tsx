@@ -51,7 +51,7 @@ const Profiles: FC<Props> = (props) => {
   return (
     <>
       <div
-        className="max-w-4xl flex items-center h-auto lg:max-h-screen flex-wrap mx-auto my-24"
+        className="max-w-4xl flex items-center h-auto lg:h-full flex-wrap mx-auto my-24"
         key={props.profile.id}
       >
         {/*Main Col*/}

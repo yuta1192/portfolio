@@ -8,7 +8,11 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: { flexWrap: ["hover", "focus"], minHeight: ["hover", "focus"] },
+    extend: {
+      flexWrap: ["hover", "focus"],
+      minHeight: ["hover", "focus"],
+      height: ["hover", "focus"],
+    },
   },
   plugins: [],
   theme: {
