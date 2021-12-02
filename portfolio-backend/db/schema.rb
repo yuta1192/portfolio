@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 2021_11_28_112043) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
+    t.integer "kind"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "kind"
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,9 +14,15 @@ function SkillMavBer() {
       <ul>
         {skill_types.map((type: { type: string; id: number }) => {
           return (
-            <li key={type.id}>
-              <div
-                className="
+            <Link
+              href="/skills/[id]"
+              as={`/skills/${type.id}`}
+              passHref
+              key={type.id}
+            >
+              <li>
+                <div
+                  className="
                 inline-flex
                 items-center
                 w-full
@@ -32,12 +38,11 @@ function SkillMavBer() {
                 focus:shadow-outline
                 hover:bg-gray-50
                 "
-              >
-                <Link href="/skills/[id]" as={`/skills/${type.id}`}>
+                >
                   <span className="ml-4">{type.type}</span>
-                </Link>
-              </div>
-            </li>
+                </div>
+              </li>
+            </Link>
           );
         })}
       </ul>

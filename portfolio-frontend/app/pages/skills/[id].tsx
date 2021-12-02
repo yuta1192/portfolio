@@ -22,37 +22,49 @@ const Skills: FC<Props> = (props) => {
     return <Error statusCode={props.errorCode} />;
   }
 
+  // function SkillTitle(props: { skill_type: number }) {
+  //   if (props.skill_type == 1) {
+  //     return (
+  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
+  //         FrontEnd
+  //       </h1>
+  //     );
+  //   } else if (props.skill_type == 2) {
+  //     return (
+  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
+  //         ServerSide
+  //       </h1>
+  //     );
+  //   } else if (props.skill_type == 3) {
+  //     return (
+  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
+  //         BackEnd
+  //       </h1>
+  //     );
+  //   } else {
+  //     return (
+  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
+  //         Another
+  //       </h1>
+  //     );
+  //   }
+  // }
+
   function SkillTitle(props: { skill_type: number }) {
     if (props.skill_type == 1) {
-      return (
-        <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-          FrontEnd
-        </h1>
-      );
+      return <>FrontEnd</>;
     } else if (props.skill_type == 2) {
-      return (
-        <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-          ServerSide
-        </h1>
-      );
+      return <>ServerSide</>;
     } else if (props.skill_type == 3) {
-      return (
-        <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-          BackEnd
-        </h1>
-      );
+      return <>BackEnd</>;
     } else {
-      return (
-        <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-          Another
-        </h1>
-      );
+      return <>Another</>;
     }
   }
 
   return (
     <>
-      <div className="flex overflow-hidden bg-white rounded-lg min-h-screen">
+      <div className="flex overflow-hidden bg-white rounded-lg">
         <div className="hidden md:flex md:flex-shrink-0">
           <div className="flex flex-col w-64">
             <div
@@ -60,7 +72,6 @@ const Skills: FC<Props> = (props) => {
               flex flex-col flex-grow
               pt-5
               overflow-y-auto
-              bg-green-500
               border-r border-gray-50
             "
             >
@@ -85,7 +96,7 @@ const Skills: FC<Props> = (props) => {
                 </h2>
               </div>
               <div className="flex flex-col flex-grow px-4 mt-5">
-                <nav className="flex-1 space-y-1 bg-green-500">
+                <nav className="flex-1 space-y-1">
                   <SkillNavBer></SkillNavBer>
                 </nav>
               </div>
@@ -93,14 +104,14 @@ const Skills: FC<Props> = (props) => {
           </div>
         </div>
 
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font w-full">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
               <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
                 <SkillTitle skill_type={props.skill_type} />
               </h1>
             </div>
-            <div className="flex flex-wrap -m-4">
+            <div className="flex flex-wrap　justify-center -m-4">
               {props.skills?.map((skill) => (
                 <div className="p-4 lg:w-1/4 md:w-1/2" key={skill.id}>
                   <div className="h-full flex flex-col items-center text-center">

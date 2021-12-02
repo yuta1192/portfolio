@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { GetStaticProps } from "next";
 import { Button } from "@supabase/ui";
 
 export default function Home() {
@@ -19,13 +18,15 @@ export default function Home() {
               No pain no gain. I want to enjoy life to the fullest!
             </p>
             <div className="flex justify-center">
-              <Button
-                type="primary"
-                size="medium"
-                className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-              >
-                Profile
-              </Button>
+              <Link href="/profiles" passHref>
+                <Button
+                  type="primary"
+                  size="medium"
+                  className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                >
+                  Profile
+                </Button>
+              </Link>
               <Button
                 type="default"
                 size="medium"

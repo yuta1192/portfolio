@@ -99,7 +99,6 @@ function Header() {
                   <Link href={item.href} key={item.name}>
                     <a>
                       <Disclosure.Button
-                        as="a"
                         className={classNames(
                           item.href === router.pathname
                             ? "bg-gray-900 text-white"
@@ -119,7 +118,6 @@ function Header() {
                   <a>
                     <Disclosure.Button
                       key="sign up"
-                      as="a"
                       className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     >
                       sign up
