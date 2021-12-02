@@ -12,6 +12,7 @@ module.exports = {
       flexWrap: ["hover", "focus"],
       minHeight: ["hover", "focus"],
       height: ["hover", "focus"],
+      padding: ["hover", "focus"],
     },
   },
   plugins: [],

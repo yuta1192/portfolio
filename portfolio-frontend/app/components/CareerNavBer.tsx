@@ -1,7 +1,7 @@
 import React from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-function CareerMavBer({ careers }: { careers: any }) {
+function CareerNavBer({ careers }: { careers: any }) {
   const years = careers
     .map((career: any) => career.year)
     .filter(function (x: number, i: number, self: any) {
@@ -12,18 +12,15 @@ function CareerMavBer({ careers }: { careers: any }) {
     <>
       {years.map((year: number, index: number) => {
         return (
-          <>
-            <p
-              className="px-4 pt-4 font-medium text-gray-900 uppercase"
-              key={index}
-            >
+          <div key={year}>
+            <p className="px-4 pt-4 font-medium text-gray-900 uppercase">
               {year}年
             </p>
             <ul>
-              {careers.map((career: any) => {
+              {careers.map((career: any, index: number) => {
                 if (career.year === year) {
                   return (
-                    <li key={career.id}>
+                    <li key={index}>
                       <AnchorLink
                         className="
                         inline-flex
@@ -51,11 +48,11 @@ function CareerMavBer({ careers }: { careers: any }) {
                 }
               })}
             </ul>
-          </>
+          </div>
         );
       })}
     </>
   );
 }
 
-export default CareerMavBer;
+export default CareerNavBer;
