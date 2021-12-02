@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function SkillMavBer() {
+function SkillNavBer() {
   const skill_types = [
     { type: "frontend", id: 1 },
     { type: "serverside", id: 2 },
@@ -50,4 +50,4 @@ function SkillMavBer() {
   );
 }
 
-export default SkillMavBer;
+export default SkillNavBer;

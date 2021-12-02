@@ -12,8 +12,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{pageProps.title}</title>
       </Head>
       <div className="flex min-h-screen flex-col">
-        <Header />
-        <Component {...pageProps} />
+        <main className="flex-grow">
+          <Header />
+          <Component {...pageProps} />
+        </main>
         <Footer />
       </div>
     </>
