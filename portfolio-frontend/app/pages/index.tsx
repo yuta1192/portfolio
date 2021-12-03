@@ -27,13 +27,15 @@ export default function Home() {
                   Profile
                 </Button>
               </Link>
-              <Button
-                type="default"
-                size="medium"
-                className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
-              >
-                Contact
-              </Button>
+              <Link href="/contacts" passHref>
+                <Button
+                  type="default"
+                  size="medium"
+                  className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
+                >
+                  Contact
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
