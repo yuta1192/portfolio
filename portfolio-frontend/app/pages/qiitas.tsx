@@ -26,20 +26,21 @@ const Qiitas: FC<Props> = (props) => {
     <>
       {props.qiitas?.map((qiita) => (
         <section className="text-gray-600 body-font" key={qiita.qiita_id}>
-          <div className="container px-5 py-24 mx-auto flex flex-wrap">
-            <h2 className="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">
-              {qiita.name}
-            </h2>
-            <div className="md:w-3/5 md:pl-6">
-              {qiita.publish_date}
+          <div className="container px-5 py-12 mx-auto items-center">
+            <div className="md:py-8 mb-10 md:mb-0 pb-10">
+              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+                {qiita.name}
+              </h1>
+              <h2 className="border-b border-gray-200">
+                投稿日：{qiita.publish_date}
+              </h2>
+              <br />
               <p className="leading-relaxed text-base">{qiita.description}</p>
-              <div className="flex md:mt-4 mt-6">
-                <Link href={qiita.url}>
-                  <a>
-                    <Button block>記事を見る</Button>
-                  </a>
-                </Link>
-              </div>
+              <Link href={qiita.url}>
+                <a className="text-indigo-500 inline-flex items-center mt-4">
+                  <Button block>記事を見る</Button>
+                </a>
+              </Link>
             </div>
           </div>
         </section>

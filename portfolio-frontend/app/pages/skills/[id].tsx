@@ -111,17 +111,28 @@ const Skills: FC<Props> = (props) => {
                 <SkillTitle skill_type={props.skill_type} />
               </h1>
             </div>
-            <div className="flex flex-wrap　justify-center -m-4">
+            <div className="flex flex-wrap -m-4">
               {props.skills?.map((skill) => (
                 <div className="p-4 lg:w-1/4 md:w-1/2" key={skill.id}>
                   <div className="h-full flex flex-col items-center text-center">
-                    <Image
-                      className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
-                      src={!skill.image ? "/no_image.png" : skill.image}
-                      width={200}
-                      height={200}
-                      alt="skill_image"
-                    />
+                    <div className="hidden lg:block">
+                      <Image
+                        className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
+                        src={!skill.image ? "/no_image.png" : skill.image}
+                        width={200}
+                        height={200}
+                        alt="skill_image"
+                      />
+                    </div>
+                    <div className="block lg:hidden">
+                      <Image
+                        className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
+                        src={!skill.image ? "/no_image.png" : skill.image}
+                        width={150}
+                        height={150}
+                        alt="skill_image"
+                      />
+                    </div>
                     <div className="w-full">
                       <h2 className="title-font font-medium text-lg text-gray-900">
                         {skill.name}

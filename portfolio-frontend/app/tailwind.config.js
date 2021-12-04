@@ -13,6 +13,7 @@ module.exports = {
       minHeight: ["hover", "focus"],
       height: ["hover", "focus"],
       padding: ["hover", "focus"],
+      textAlign: ["hover", "focus"],
     },
   },
   plugins: [],
