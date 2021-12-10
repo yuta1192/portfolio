@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
-const findUserByCredentials = async (credentials) => {
+const findUserByCredentials = async (credentials: any) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/user_select`,
     {
