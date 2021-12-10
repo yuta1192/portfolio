@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  def show
-    user = User.find_by(email: params[:emial], encrypted_password: params[:password])
+  def user_select
+    user = User.find_by(email: params[:credentials][:email])
+    unless user && user.valid_password?(params[:credentials][:password])
+      user = nil
+    end
 
     render json: user
   end

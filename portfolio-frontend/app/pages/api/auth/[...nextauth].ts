@@ -3,10 +3,30 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
+const findUserByCredentials = async (credentials) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/user_select`,
+    {
+      body: JSON.stringify({ credentials }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    }
+  );
+  const json = await response.json();
+
+  if (!json || response.status !== 200) {
+    return undefined;
+  } else {
+    return response;
+  }
+};
+
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "Email",
       credentials: {
         email: {
           label: "Email",
@@ -16,34 +36,16 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = await fetch("/api/userselect", {
-          body: JSON.stringify(req),
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-        });
-
+        const user = findUserByCredentials(credentials);
         if (user) {
-          // Any object returned will be saved in `user` property of the JWT
           return user;
         } else {
-          // If you return null or false then the credentials will be rejected
           return null;
           // You can also Reject this callback with an Error or with a URL:
           // throw new Error('error message') // Redirect to error page
           // throw '/path/to/redirect'        // Redirect to a URL
         }
       },
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
   callbacks: {
@@ -58,18 +60,18 @@ export default NextAuth({
         // return '/unauthorized'
       }
     },
-
-    async jwt({ token, account }) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      return token;
-    },
-    async session({ session, token, user }) {
-      // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken;
-      return session;
-    },
   },
+  //   async jwt({ token, account }) {
+  //     // Persist the OAuth access_token to the token right after signin
+  //     if (account) {
+  //       token.accessToken = account.access_token;
+  //     }
+  //     return token;
+  //   },
+  //   async session({ session, token, user }) {
+  //     // Send properties to the client, like an access_token from a provider.
+  //     session.accessToken = token.accessToken;
+  //     return session;
+  //   },
+  // },
 });

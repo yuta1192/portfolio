@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :qiitas, only: [:index]
   resources :skills, only: [:index, :show]
   resources :contacts, only: [:create]
-  resources :users, only: [:show]
+  resources :users do
+    collection do
+      post 'user_select'
+    end
+  end
 end
