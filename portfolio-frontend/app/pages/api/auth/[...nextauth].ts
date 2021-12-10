@@ -1,27 +1,5 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
-import GithubProvider from "next-auth/providers/github";
-
-const findUserByCredentials = async (credentials: any) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/user_select`,
-    {
-      body: JSON.stringify({ credentials }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    }
-  );
-  const json = await response.json();
-
-  if (!json || response.status !== 200) {
-    return undefined;
-  } else {
-    return response;
-  }
-};
 
 export default NextAuth({
   providers: [
@@ -36,11 +14,22 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const user = findUserByCredentials(credentials);
-        if (user) {
-          return user;
-        } else {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/user_select`,
+          {
+            body: JSON.stringify({ credentials }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+          }
+        );
+        const json = await response.json();
+
+        if (!json || response.status !== 200) {
           return null;
+        } else {
+          return json;
           // You can also Reject this callback with an Error or with a URL:
           // throw new Error('error message') // Redirect to error page
           // throw '/path/to/redirect'        // Redirect to a URL
