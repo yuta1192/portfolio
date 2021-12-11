@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Email",
+      name: "credentials",
       credentials: {
         email: {
           label: "Email",
@@ -29,7 +29,9 @@ export default NextAuth({
         if (!json || response.status !== 200) {
           return null;
         } else {
-          return json;
+          const user = { id: json.id, email: json.email };
+          return user;
+          // return user;
           // You can also Reject this callback with an Error or with a URL:
           // throw new Error('error message') // Redirect to error page
           // throw '/path/to/redirect'        // Redirect to a URL
@@ -38,29 +40,22 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
-        return true;
-      } else {
-        // Return false to display a default error message
-        return false;
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
+    jwt: ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
       }
+      return token;
+    },
+    session: ({ session, token }) => {
+      if (token) {
+        session.id = token.id;
+      }
+      return session;
     },
   },
-  //   async jwt({ token, account }) {
-  //     // Persist the OAuth access_token to the token right after signin
-  //     if (account) {
-  //       token.accessToken = account.access_token;
-  //     }
-  //     return token;
-  //   },
-  //   async session({ session, token, user }) {
-  //     // Send properties to the client, like an access_token from a provider.
-  //     session.accessToken = token.accessToken;
-  //     return session;
-  //   },
-  // },
+  secret: "test",
+  jwt: {
+    secret: "test",
+    encryption: true,
+  },
 });
