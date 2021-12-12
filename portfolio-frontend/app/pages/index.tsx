@@ -2,8 +2,11 @@ import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@supabase/ui";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <>
       <section className="text-gray-600 body-font">
