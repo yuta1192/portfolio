@@ -31,10 +31,6 @@ export default NextAuth({
         } else {
           const user = { id: json.id, email: json.email };
           return user;
-          // return user;
-          // You can also Reject this callback with an Error or with a URL:
-          // throw new Error('error message') // Redirect to error page
-          // throw '/path/to/redirect'        // Redirect to a URL
         }
       },
     }),
@@ -56,6 +52,5 @@ export default NextAuth({
   secret: "test",
   jwt: {
     secret: "test",
-    encryption: true,
   },
 });
