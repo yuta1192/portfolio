@@ -1,12 +1,12 @@
 import React from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import "tailwindcss/tailwind.css";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { faSquare } from "@fortawesome/free-solid-svg-icons/faSquare";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +24,6 @@ function classNames(...classes: string[]) {
 }
 
 function AdminHeader() {
-  const { data: session } = useSession();
   const router = useRouter();
 
   return (
@@ -72,9 +71,7 @@ function AdminHeader() {
           <div className="flex flex-shrink-0 p-4 px-4 bg-indigo-600">
             <a href="#" className="flex-shrink-0 block w-full group">
               <div className="flex items-center">
-                <div>
-                  {/* <img className="inline-block rounded-full h-9 w-9" src="https://d33wubrfki0l68.cloudfront.net/c5b13c40dad2f6fe28f2f7f016c9d027f2a39306/afe15/images/wickedlabslogo.jpg" alt=""> */}
-                </div>
+                <div></div>
                 <div className="ml-3">
                   <button onClick={() => signOut()}>ログアウト</button>
                 </div>
