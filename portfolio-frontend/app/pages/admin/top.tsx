@@ -1,10 +1,27 @@
-import React from "react";
+import React, { FC } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import "tailwindcss/tailwind.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../components/admin/Header";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-solid-svg-icons/faSquare";
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import TopCountLink from "../../components/admin/TopCountLink";
 
-export const Top = () => {
+type Counts = {
+  name: string;
+  count: number;
+};
+
+type Props = {
+  counts: Counts[];
+};
+
+const Top: FC<Props> = (props) => {
   const { data: session } = useSession();
 
   return (
@@ -12,25 +29,140 @@ export const Top = () => {
       <Header />
       <div className="flex flex-col flex-1 w-0 overflow-hidden">
         <main className="relative flex-1 overflow-y-auto focus:outline-none">
-          <div className="py-6">
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-              <h1 className="text-lg text-neutral-600">
-                {" "}
-                Here is where you put your stuff{" "}
-              </h1>
-            </div>
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-              <div className="py-4">
-                <div className="rounded-lg bg-gray-50 h-96"></div>
+          <section className="text-gray-600 body-font">
+            <div className="container px-5 py-24 mx-auto">
+              <div className="flex flex-col text-center w-full mb-20">
+                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                  Portfolio
+                  <br />
+                  Dashbord
+                </h1>
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+                  ファイル数、閲覧数などを表示します。
+                </p>
+              </div>
+              <div className="flex flex-wrap -m-4 text-center">
+                {props.counts?.map((count) => (
+                  <div
+                    className="p-4 md:w-1/4 sm:w-1/2 w-full"
+                    key={count.name}
+                  >
+                    <TopCountLink item={count}></TopCountLink>
+                  </div>
+                ))}
+
+                {/* <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                  <Link href="/admin/apps" passHref>
+                    <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                      <FontAwesomeIcon icon={faUserCircle} size="4x" />
+                      <div className="pb-3"></div>
+                      <h2 className="title-font font-medium text-3xl text-gray-900">
+                        10件
+                      </h2>
+                      <p className="leading-relaxed">Profile</p>
+                    </div>
+                  </Link>
+                </div>
+
+                <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                  <Link href="/admin/profiles" passHref>
+                    <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                      <FontAwesomeIcon icon={faUserCircle} size="4x" />
+                      <div className="pb-3"></div>
+                      <h2 className="title-font font-medium text-3xl text-gray-900">
+                        10件
+                      </h2>
+                      <p className="leading-relaxed">Profile</p>
+                    </div>
+                  </Link>
+                </div>
+                <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                  <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      className="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                      <circle cx={9} cy={7} r={4} />
+                      <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75" />
+                    </svg>
+                    <h2 className="title-font font-medium text-3xl text-gray-900">
+                      1.3K
+                    </h2>
+                    <p className="leading-relaxed">Users</p>
+                  </div>
+                </div>
+                <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                  <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      className="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M3 18v-6a9 9 0 0118 0v6" />
+                      <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z" />
+                    </svg>
+                    <h2 className="title-font font-medium text-3xl text-gray-900">
+                      74
+                    </h2>
+                    <p className="leading-relaxed">Files</p>
+                  </div>
+                </div>
+                <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                  <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      className="text-indigo-500 w-12 h-12 mb-3 inline-block"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <h2 className="title-font font-medium text-3xl text-gray-900">
+                      46
+                    </h2>
+                    <p className="leading-relaxed">Places</p>
+                  </div>
+                </div> */}
               </div>
             </div>
-          </div>
+          </section>
         </main>
       </div>
     </div>
   );
 };
-export default Top;
 
-// Signed in as {session.user?.email} <br />
-// <button onClick={() => signOut()}>Sign out</button>
+export const getStaticProps = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/top`
+  );
+  const json = await response.json();
+
+  // jsonが存在しない場合
+  if (!json || response.status !== 200) {
+    return {
+      props: {},
+    };
+  }
+
+  return {
+    props: {
+      counts: json,
+    },
+  };
+};
+
+export default Top;
