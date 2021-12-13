@@ -11,4 +11,8 @@ Rails.application.routes.draw do
       post 'user_select'
     end
   end
+
+  namespace :admin do
+    resources :top, only: [:index]
+  end
 end

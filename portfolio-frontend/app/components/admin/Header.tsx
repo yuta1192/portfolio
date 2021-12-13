@@ -1,22 +1,22 @@
 import React from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import "tailwindcss/tailwind.css";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { faSquare } from "@fortawesome/free-solid-svg-icons/faSquare";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 const navigation = [
-  { name: "プロフィール", href: "/profiles", icon: faUserCircle },
-  { name: "アプリ", href: "/apps", icon: faMobileAlt },
-  { name: "Qiita", href: "/qiitas", icon: faSearch },
-  { name: "スキル", href: "/skills", icon: faPencilAlt },
-  { name: "経歴", href: "/careers", icon: faBriefcase },
+  { name: "プロフィール", href: "/admin/profiles", icon: faUserCircle },
+  { name: "アプリ", href: "/admin/apps", icon: faMobileAlt },
+  { name: "Qiita", href: "/admin/qiitas", icon: faSearch },
+  { name: "スキル", href: "/admin/skills", icon: faPencilAlt },
+  { name: "経歴", href: "/admin/careers", icon: faBriefcase },
 ];
 
 function classNames(...classes: string[]) {
@@ -24,7 +24,6 @@ function classNames(...classes: string[]) {
 }
 
 function AdminHeader() {
-  const { data: session } = useSession();
   const router = useRouter();
 
   return (
@@ -42,7 +41,7 @@ function AdminHeader() {
           <div className="flex flex-col flex-grow px-4 mt-5">
             <nav className="flex-1 space-y-1 bg-indigo-700">
               <p className="px-4 pt-4 font-medium text-white uppercase">
-                Portfolio
+                <Link href="/admin/top">Portfolio</Link>
               </p>
               <ul>
                 {navigation.map((item) => (
@@ -72,11 +71,9 @@ function AdminHeader() {
           <div className="flex flex-shrink-0 p-4 px-4 bg-indigo-600">
             <a href="#" className="flex-shrink-0 block w-full group">
               <div className="flex items-center">
-                <div>
-                  {/* <img className="inline-block rounded-full h-9 w-9" src="https://d33wubrfki0l68.cloudfront.net/c5b13c40dad2f6fe28f2f7f016c9d027f2a39306/afe15/images/wickedlabslogo.jpg" alt=""> */}
-                </div>
+                <div></div>
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-white">ログアウト</p>
+                  <button onClick={() => signOut()}>ログアウト</button>
                 </div>
               </div>
             </a>
