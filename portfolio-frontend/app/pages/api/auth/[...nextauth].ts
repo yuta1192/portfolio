@@ -27,10 +27,10 @@ export default NextAuth({
         const json = await response.json();
 
         if (!json || response.status !== 200) {
-          return null;
+          return Promise.resolve(null);
         } else {
           const user = { id: json.id, email: json.email };
-          return user;
+          return Promise.resolve(user);
         }
       },
     }),
@@ -49,8 +49,8 @@ export default NextAuth({
       return session;
     },
   },
-  secret: "test",
+  secret: `${process.env.AUTH_SECRET_KEY}`,
   jwt: {
-    secret: "test",
+    secret: `${process.env.AUTH_JWT_SECRET_KEY}`,
   },
 });
