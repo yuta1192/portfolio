@@ -16,7 +16,6 @@ type Props = {
 };
 
 const Top: FC<Props> = (props) => {
-  // const { data: session } = useSession();
   const { data: session, status } = useSession();
   const loading = status === "loading";
 

@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :top, only: [:index]
+    resources :profiles, only: [:index, :new, :edit, :update]
   end
 end

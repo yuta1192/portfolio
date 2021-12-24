@@ -22,34 +22,6 @@ const Skills: FC<Props> = (props) => {
     return <Error statusCode={props.errorCode} />;
   }
 
-  // function SkillTitle(props: { skill_type: number }) {
-  //   if (props.skill_type == 1) {
-  //     return (
-  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-  //         FrontEnd
-  //       </h1>
-  //     );
-  //   } else if (props.skill_type == 2) {
-  //     return (
-  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-  //         ServerSide
-  //       </h1>
-  //     );
-  //   } else if (props.skill_type == 3) {
-  //     return (
-  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-  //         BackEnd
-  //       </h1>
-  //     );
-  //   } else {
-  //     return (
-  //       <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">
-  //         Another
-  //       </h1>
-  //     );
-  //   }
-  // }
-
   function SkillTitle(props: { skill_type: number }) {
     if (props.skill_type == 1) {
       return <>FrontEnd</>;
