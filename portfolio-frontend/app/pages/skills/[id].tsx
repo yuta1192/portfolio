@@ -121,20 +121,20 @@ const Skills: FC<Props> = (props) => {
   );
 };
 
-// export async function getStaticPaths() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/skills`);
+export async function getStaticPaths() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/skills`);
 
-//   const skill_list = await res.json();
+  const skill_list = await res.json();
 
-//   const paths = skill_list.map((skill: { kind: number }) => ({
-//     params: { id: skill.kind.toString() },
-//   }));
+  const paths = skill_list.map((skill: { kind: number }) => ({
+    params: { id: skill.kind.toString() },
+  }));
 
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
 export async function getStaticProps({ params }: { params: any }) {
   const response = await fetch(
