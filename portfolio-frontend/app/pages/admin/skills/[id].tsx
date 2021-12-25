@@ -208,7 +208,7 @@ export async function getStaticPaths() {
   const skills = await res.json();
 
   const paths = skills.map((skill: { id: number }) => ({
-    params: { id: skill.id },
+    params: { id: skill.id.toString() },
   }));
 
   return {
