@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 function SkillSelect(kind: any) {
   if (kind.kind === 1)

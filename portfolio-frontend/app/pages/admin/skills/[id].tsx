@@ -37,7 +37,6 @@ const Skills: FC<Props> = (props) => {
     defaultValues: {
       id: props.skill.id,
       name: props.skill.name,
-      kind: props.skill.kind,
       image: props.skill.image,
     },
   });
