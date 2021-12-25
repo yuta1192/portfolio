@@ -9,7 +9,6 @@ import DefaultErrorPage from "next/error";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "../../../styles/contact.module.css";
-import SkillSelect from "../../../components/admin/SkillSelect";
 
 type Skill = {
   id: number;
