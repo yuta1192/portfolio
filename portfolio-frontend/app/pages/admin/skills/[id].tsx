@@ -37,6 +37,7 @@ const Skills: FC<Props> = (props) => {
     defaultValues: {
       id: props.skill.id,
       name: props.skill.name,
+      kind: props.skill.kind,
       image: props.skill.image,
     },
   });
@@ -127,11 +128,15 @@ const Skills: FC<Props> = (props) => {
                                   m-0
                                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="Default select example"
+                      defaultValue={props.skill.kind}
                       {...register("kind", {
                         required: true,
                       })}
                     >
-                      <SkillSelect kind={props.skill.kind}></SkillSelect>
+                      <option value="1">frontend</option>
+                      <option value="2">serverside</option>
+                      <option value="3">backend</option>
+                      <option value="9">another</option>
                     </select>
                     <span className={styles["error-message"]}>
                       {errors.kind?.type === "required" &&
