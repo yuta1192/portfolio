@@ -200,23 +200,6 @@ const Skills: FC<Props> = (props) => {
   );
 };
 
-export async function getStaticPaths() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/skills`
-  );
-
-  const skills = await res.json();
-
-  const paths = skills.map((skill: { id: number }) => ({
-    params: { id: skill.id.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
 export async function getStaticProps({ params }: { params: any }) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/skills/${params.id}/edit`
