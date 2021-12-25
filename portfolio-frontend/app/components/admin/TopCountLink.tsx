@@ -23,7 +23,7 @@ function TopCountLink(item: any) {
         </Link>
       )}
       {item.item.name === "app" && (
-        <Link href="/admin/profiles" passHref>
+        <Link href="/admin/my_apps" passHref>
           <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
             <FontAwesomeIcon icon={faMobileAlt} size="4x" />
             <div className="pb-3"></div>
@@ -35,7 +35,7 @@ function TopCountLink(item: any) {
         </Link>
       )}
       {item.item.name === "qiita" && (
-        <Link href="/admin/profiles" passHref>
+        <Link href="/admin/qiitas" passHref>
           <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
             <FontAwesomeIcon icon={faSearch} size="4x" />
             <div className="pb-3"></div>
@@ -47,7 +47,7 @@ function TopCountLink(item: any) {
         </Link>
       )}
       {item.item.name === "skill" && (
-        <Link href="/admin/profiles" passHref>
+        <Link href="/admin/skills" passHref>
           <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
             <FontAwesomeIcon icon={faPencilAlt} size="4x" />
             <div className="pb-3"></div>
@@ -59,7 +59,7 @@ function TopCountLink(item: any) {
         </Link>
       )}
       {item.item.name === "career" && (
-        <Link href="/admin/profiles" passHref>
+        <Link href="/admin/careers" passHref>
           <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
             <FontAwesomeIcon icon={faBriefcase} size="4x" />
             <div className="pb-3"></div>

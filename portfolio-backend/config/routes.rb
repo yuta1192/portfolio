@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :top, only: [:index]
     resources :profiles, only: [:index, :new, :edit, :update, :create]
     resources :my_apps, only: [:index, :new, :edit, :update, :create]
+    resources :qiitas, only: [:index, :new, :edit, :update, :create]
   end
 end
