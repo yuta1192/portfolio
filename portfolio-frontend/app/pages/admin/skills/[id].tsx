@@ -146,7 +146,7 @@ const Skills: FC<Props> = (props) => {
                       <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
                         <div className="m-4">
                           <label className="inline-block mb-2 text-gray-500">
-                            Image
+                            イメージ
                           </label>
                           <div className="flex items-center justify-center w-full">
                             <label className="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
@@ -213,7 +213,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
