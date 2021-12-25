@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import "tailwindcss/tailwind.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../../components/admin/Header";
 import Image from "next/image";
 import Error from "next/error";
 import DefaultErrorPage from "next/error";
 import Link from "next/link";
+import { Button } from "@supabase/ui";
 
 type Profile = {
   id: number;
@@ -41,8 +41,12 @@ const Profile: FC<Props> = (props) => {
           <Header />
           <div className="flex flex-col flex-1 w-0 overflow-hidden">
             <main className="relative flex-1 overflow-y-auto focus:outline-none">
+              <Link href="/admin/profiles/new" passHref>
+                <Button>新規作成</Button>
+              </Link>
+
               <section className="text-gray-600 body-font">
-                <div className="container px-5 py-24 mx-auto">
+                <div className="container px-5 py-12 mx-auto">
                   <div className="flex flex-col text-center w-full mb-20">
                     <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">
                       Select Profile

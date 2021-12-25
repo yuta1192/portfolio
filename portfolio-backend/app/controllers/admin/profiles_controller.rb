@@ -5,6 +5,12 @@ class Admin::ProfilesController < ApplicationController
     render json: profiles
   end
 
+  def new
+    profile = Profile.new
+
+    render json: profile
+  end
+
   def edit
     profile = Profile.find(params[:id])
 
@@ -19,7 +25,19 @@ class Admin::ProfilesController < ApplicationController
     if profile.update!(profile_params)
       render json: nil, status: :ok
     else
-      render json: contact.errors, status: :unprocessable_entity
+      render json: profile.errors, status: :unprocessable_entity
+    end
+  end
+
+  def create
+    active_profile = Profile.find_by(selected: true)
+    profile = Profile.new(profile_params)
+    active_profile.update(selected: false) if profile.selected == true
+
+    if profile.save!
+      render json: nil, status: :ok
+    else
+      render json: profile.errors, status: :unprocessable_entity
     end
   end
 
