@@ -13,7 +13,7 @@ import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 const navigation = [
   { name: "プロフィール", href: "/admin/profiles", icon: faUserCircle },
-  { name: "アプリ", href: "/admin/apps", icon: faMobileAlt },
+  { name: "アプリ", href: "/admin/my_apps", icon: faMobileAlt },
   { name: "Qiita", href: "/admin/qiitas", icon: faSearch },
   { name: "スキル", href: "/admin/skills", icon: faPencilAlt },
   { name: "経歴", href: "/admin/careers", icon: faBriefcase },
