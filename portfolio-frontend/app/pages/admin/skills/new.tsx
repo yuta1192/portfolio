@@ -118,13 +118,12 @@ const Skills: FC<Props> = (props) => {
                                   m-0
                                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="Default select example"
+                      defaultValue={""}
                       {...register("kind", {
                         required: true,
                       })}
                     >
-                      <option value="" selected>
-                        種類を選択してください。
-                      </option>
+                      <option value="">種類を選択してください。</option>
                       <option value="1">frontend</option>
                       <option value="2">serverside</option>
                       <option value="3">backend</option>
