@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     resources :my_apps, only: [:index, :new, :edit, :update, :create]
     resources :qiitas, only: [:index, :new, :edit, :update, :create]
     resources :skills, only: [:index, :new, :edit, :update, :create]
+    resources :careers, only: [:index, :new, :edit, :update, :create]
   end
 end

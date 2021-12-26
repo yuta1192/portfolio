@@ -15,6 +15,7 @@ type Qiita = {
   name: string;
   description: string;
   url: string;
+  qiita_id: number;
   image: string;
 };
 
@@ -39,6 +40,7 @@ const Qiitas: FC<Props> = (props) => {
       name: props.qiita.name,
       description: props.qiita.description,
       url: props.qiita.url,
+      qiita_id: props.qiita.qiita_id,
       image: props.qiita.image,
     },
   });
@@ -162,6 +164,30 @@ const Qiitas: FC<Props> = (props) => {
                     />
                     <span className={styles["error-message"]}>
                       {errors.url?.type === "required" &&
+                        "URLが入力されていません。"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap mx-3 mb-2">
+                  <div className="w-full px-3 mb-6 md:mb-0">
+                    <label
+                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="grid-city"
+                    >
+                      qiita id
+                    </label>
+                    <input
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="grid-city"
+                      type="text"
+                      placeholder="1"
+                      {...register("qiita_id", {
+                        required: true,
+                      })}
+                    />
+                    <span className={styles["error-message"]}>
+                      {errors.qiita_id?.type === "required" &&
                         "URLが入力されていません。"}
                     </span>
                   </div>
