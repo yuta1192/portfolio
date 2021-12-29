@@ -1,11 +1,11 @@
 export default function handler(req: any, res: any) {
   if (req.method == "POST") {
     fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/careers/${req.body.career.id}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/${req.body.model}/${req.body.id}`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(req.body.career),
+        body: JSON.stringify(req.body.id),
       }
     );
     res.status(200).end();

@@ -35,6 +35,15 @@ class Admin::MyAppsController < ApplicationController
     end
   end
 
+  def destroy
+    app = MyApp.find(params[:id])
+    if app.destroy!
+      render json: nil, status: :ok
+    else
+      render json: app.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def app_params

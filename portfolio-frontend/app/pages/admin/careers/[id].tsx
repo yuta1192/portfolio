@@ -14,9 +14,6 @@ import { useState } from "react";
 import { Button, IconTrash, Space, Typography } from "@supabase/ui";
 import { useRouter } from "next/router";
 
-// Modalスタイリング
-const customStyles = {};
-
 // アプリのルートを識別するクエリセレクタを指定する。
 Modal.setAppElement("#__next");
 
@@ -88,8 +85,8 @@ const Careers: FC<Props> = (props) => {
   };
 
   const propDelete = async (props: any) => {
-    const result = await fetch("/api/careerDestroy", {
-      body: JSON.stringify(props),
+    const result = await fetch("/api/modelDestroy", {
+      body: JSON.stringify({ id: props.career.id, model: "careers" }),
       headers: {
         "Content-Type": "application/json",
       },

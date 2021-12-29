@@ -41,6 +41,15 @@ class Admin::ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    profile = Profile.find(params[:id])
+    if profile.destroy!
+      render json: nil, status: :ok
+    else
+      render json: profile.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def profile_params

@@ -35,6 +35,15 @@ class Admin::SkillsController < ApplicationController
     end
   end
 
+  def destroy
+    skill = Skill.find(params[:id])
+    if skill.destroy!
+      render json: nil, status: :ok
+    else
+      render json: skill.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def skill_params

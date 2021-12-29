@@ -9,6 +9,13 @@ import DefaultErrorPage from "next/error";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "../../../styles/contact.module.css";
+import Modal from "react-modal";
+import { useState } from "react";
+import { Button, IconTrash, Space, Typography } from "@supabase/ui";
+import { useRouter } from "next/router";
+
+// アプリのルートを識別するクエリセレクタを指定する。
+Modal.setAppElement("#__next");
 
 type Skill = {
   id: number;
@@ -23,6 +30,7 @@ type Props = {
 };
 
 const Skills: FC<Props> = (props) => {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const loading = status === "loading";
   const {
@@ -57,6 +65,40 @@ const Skills: FC<Props> = (props) => {
     reset();
   };
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // モーダルを開く処理
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const afterOpenModal = () => {
+    // モーダルが開いた後の処理
+  };
+
+  // モーダルを閉じる処理
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const propDelete = async (props: any) => {
+    const result = await fetch("/api/modelDestroy", {
+      body: JSON.stringify({ id: props.skill.id, model: "skills" }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    if (result.status === 200) {
+      // pushState の場合
+      router.push("/admin/skills");
+
+      // replaceState の場合
+      router.replace("/admin/skills");
+    }
+  };
+
   if (props.errorCode) {
     return <Error statusCode={props.errorCode} />;
   }
@@ -73,6 +115,56 @@ const Skills: FC<Props> = (props) => {
           <Header />
           <div className="flex flex-col flex-1 w-0 overflow-hidden">
             <main className="relative flex-1 overflow-y-auto focus:outline-none">
+              <Button danger icon={<IconTrash />} onClick={openModal}>
+                Delete
+              </Button>
+
+              <Modal
+                // isOpenがtrueならモダールが起動する
+                isOpen={modalIsOpen}
+                // モーダルが開いた後の処理を定義
+                onAfterOpen={afterOpenModal}
+                // モーダルを閉じる処理を定義
+                onRequestClose={closeModal}
+                // スタイリングを定義
+                style={{
+                  overlay: {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                  },
+                  content: {
+                    top: "50%",
+                    left: "50%",
+                    right: "auto",
+                    bottom: "auto",
+                    marginRight: "-50%",
+                    width: "500px",
+                    height: "150px",
+                    transform: "translate(-50%, -50%)",
+                  },
+                }}
+              >
+                <h2>本当に削除しますか。</h2>
+                <Typography.Text>
+                  一度削除した場合データを戻すことはできません。
+                  削除してもよろしいでしょうか。
+                </Typography.Text>
+                <br />
+                <Space>
+                  <Button type="outline" onClick={closeModal}>
+                    Cancel
+                  </Button>
+                  <Button
+                    danger
+                    icon={<IconTrash />}
+                    onClick={() => propDelete(props)}
+                  >
+                    Delete
+                  </Button>
+                </Space>
+              </Modal>
               <form className="w-full pt-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-wrap mx-3 mb-6">
                   <div className="w-full px-3 mb-6 md:mb-0">
