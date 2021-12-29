@@ -70,7 +70,7 @@ const Skills: FC<Props> = (props) => {
                 ALL MY SKILLS!
               </h1>
             </div>
-            <div className="flex items-center -m-4">
+            <div className="flex flex-wrap m-4">
               {props.skills?.map((skill) => (
                 <div className="lg:p-4 lg:w-1/4 md:w-1/2" key={skill.id}>
                   <div className="h-full flex flex-col items-center text-center">
