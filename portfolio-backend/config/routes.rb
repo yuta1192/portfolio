@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :top, only: [:index]
-    resources :profiles, only: [:index, :new, :edit, :update, :create]
-    resources :my_apps, only: [:index, :new, :edit, :update, :create]
-    resources :qiitas, only: [:index, :new, :edit, :update, :create]
-    resources :skills, only: [:index, :new, :edit, :update, :create]
-    resources :careers, only: [:index, :new, :edit, :update, :create]
+    resources :profiles, only: [:index, :new, :edit, :update, :create, :destroy]
+    resources :my_apps, only: [:index, :new, :edit, :update, :create, :destroy]
+    resources :qiitas, only: [:index, :new, :edit, :update, :create, :destroy]
+    resources :skills, only: [:index, :new, :edit, :update, :create, :destroy]
+    resources :careers, only: [:index, :new, :edit, :update, :create, :destroy]
   end
 end

@@ -35,6 +35,15 @@ class Admin::CareersController < ApplicationController
     end
   end
 
+  def destroy
+    career = Career.find(params[:id])
+    if career.destroy!
+      render json: nil, status: :ok
+    else
+      render json: career.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def career_params

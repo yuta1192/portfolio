@@ -35,6 +35,15 @@ class Admin::QiitasController < ApplicationController
     end
   end
 
+  def destroy
+    qiita = Qiita.find(params[:id])
+    if qiita.destroy!
+      render json: nil, status: :ok
+    else
+      render json: qiita.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def qiita_params
