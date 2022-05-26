@@ -50,7 +50,7 @@ const Skills: FC<Props> = (props) => {
                       Select Skill
                     </h1>
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                      自分が作成したQiitaを表示します。
+                      自分が作成したSkillを表示します。
                     </p>
                   </div>
                   <div className="flex flex-wrap -m-4">
