@@ -20,7 +20,7 @@ class Admin::ProfilesController < ApplicationController
   def update
     profile = Profile.find(params[:id])
     active_profile = Profile.find_by(selected: true)
-    active_profile.update(selected: false) if profile != active_profile && params[:selected] == true
+    active_profile.update(selected: false) if active_profile && profile != active_profile && params[:selected] == true
 
     if profile.update!(profile_params)
       render json: nil, status: :ok
